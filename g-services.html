@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>G-SERVICES - Livraison rapide et fiable</title>
+<style>
+  
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f9fbfd;
+    color: #112d4e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    color: #0f4c8a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #09375d;
+    outline: none;
+  }
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 76, 138, 0.85);
+    backdrop-filter: saturate(180%) blur(10px);
+    z-index: 1100;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: white;
+    letter-spacing: 0.15em;
+    user-select: none;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #a9d1ff;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+
+  body {
+    padding-top: 60px;
+  }
+
+  header + .hero-container {
+  
+    padding-top: 0;
+  }
+
+  
+
+  
+  .hero {
+    position: relative;
+    background: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80") no-repeat center/cover;
+    height: 450px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 76, 138, 0.75);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: auto;
+  }
+  .hero-content h1 {
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #c8d9ff;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-primary {
+    background-color: #a9d1ff;
+    color: #0f4c8a;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgb(15 76 138 / 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: #7bb0ff;
+    box-shadow: 0 8px 30px rgb(7 38 80 / 0.7);
+    transform: scale(1.05);
+    outline: none;
+  }
+  .btn-secondary {
+    background-color: transparent;
+    color: #a9d1ff;
+    border: 2px solid #a9d1ff;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  .btn-secondary:hover, .btn-secondary:focus {
+    background-color: #a9d1ff;
+    color: #0f4c8a;
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  
+  .how-it-works {
+    max-width: 1140px;
+    margin: 3rem auto 4rem;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .how-it-works h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0f4c8a;
+    margin-bottom: 2rem;
+  }
+  .steps {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    gap: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+  }
+  .step {
+    flex: 0 0 280px;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgb(15 76 138 / 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+    min-width: 280px;
+  }
+  .step:hover, .step:focus-within {
+    box-shadow: 0 10px 35px rgb(15 76 138 / 0.25);
+  }
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: #0f4c8a;
+  }
+  .step h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #0f4c8a;
+  }
+  .step p {
+    font-size: 1rem;
+    color: #334e7c;
+  }
+
+  
+  .services {
+    max-width: 1140px;
+    margin: 0 auto 6rem;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .services h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0f4c8a;
+    margin-bottom: 3rem;
+  }
+  .service-list {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    gap: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+  }
+  .service-card {
+    flex: 0 0 280px;
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgb(15 76 138 / 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+    min-width: 280px;
+  }
+  .service-card:hover, .service-card:focus-within {
+    box-shadow: 0 12px 40px rgb(15 76 138 / 0.25);
+  }
+  .service-icon {
+    font-size: 2.5rem;
+    color: #0f4c8a;
+    margin-bottom: 1rem;
+  }
+  .service-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .service-card p {
+    color: #334e7c;
+    font-size: 1rem;
+  }
+
+  
+  footer {
+    background: linear-gradient(135deg, #123a6d 0%, #0d2a52 100%);
+    color: #f0f4ff;
+    font-family: 'Poppins', sans-serif;
+    padding: 3rem 1.5rem;
+    font-size: 1rem;
+  }
+  footer .footer-grid {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
+  }
+  footer .footer-section {
+    flex: 1 1 280px;
+    min-width: 250px;
+  }
+  footer h3 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  footer p, footer a {
+    margin: 0.3rem 0;
+    color: #a9c9ff;
+    text-decoration: none;
+  }
+  footer a:hover, footer a:focus {
+    text-decoration: underline;
+    color: #e0e8ff;
+  }
+
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .social-icons a {
+    color: #a9c9ff;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .social-icons a:hover, .social-icons a:focus {
+    color: #ffe599;
+    outline: none;
+  }
+  .social-icons svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+
+  footer .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #a9c9ff;
+  }
+
+
+  @media (max-width: 600px) {
+    footer .footer-grid {
+      flex-direction: column;
+    }
+  }
+
+  
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #ffa500;
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo" aria-label="Logo G-SERVICES">G-SERVICES</div>
+    <nav aria-label="Menu principal">
+      <a href="boutiques.html">E-commercants</a>
+      <a href="clients.html">Clients</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Livraison rapide, sûre et fiable à votre porte</h1>
+    <p>G-SERVICES vous accompagne pour transporter vos colis avec soin. Simple, rapide et sécurisé, notre service vous connecte à vos boutiques préférées.</p>
+    <div class="hero-buttons">
+      <a href="clients.html" class="btn-primary">Je veux me faire livrer</a>
+      <a href="boutiques.html" class="btn-secondary">Je suis un e-commercant</a>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" aria-labelledby="how-title">
+  <h2 id="how-title">Comment ça marche ?</h2>
+  <div class="steps">
+    <article class="step" tabindex="0">
+      <svg class="step-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0f4c8a" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linejoin="round" stroke-linecap="round" d="M12 8v4l3 3"/></svg>
+      <h3>Vous passez commande</h3>
+      <p>Commandez vos produits préférés en ligne ou directement en boutique.</p>
+    </article>
+    <article class="step" tabindex="0">
+      <svg class="step-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0f4c8a" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linejoin="round" stroke-linecap="round" d="M3 10h14l-1.5 9h-11l-1.5-9z"/></svg>
+      <h3>Nous récupérons votre colis</h3>
+      <p>Notre équipe récupère votre commande avec soin dans la boutique.</p>
+    </article>
+    <article class="step" tabindex="0">
+      <svg class="step-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0f4c8a" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linejoin="round" stroke-linecap="round" d="M20 6v8a2 2 0 01-2 2H8l-4 4V6a2 2 0 012-2h12a2 2 0 012 2z"/></svg>
+      <h3>Livraison rapide</h3>
+      <p>Recevez votre colis rapidement à votre domicile avec suivi en temps réel.</p>
+    </article>
+  </div>
+</section>
+
+<section class="services" aria-labelledby="services-title">
+  <h2 id="services-title">Nos services</h2>
+  <div class="service-list">
+    <article class="service-card" tabindex="0">
+      <div class="service-icon" aria-hidden="true">🚀</div>
+      <h3>Livraison express</h3>
+      <p>Délais rapides et notifications en temps réel pour vos commandes urgentes.</p>
+    </article>
+    <article class="service-card" tabindex="0">
+      <div class="service-icon" aria-hidden="true">🔒</div>
+      <h3>Service sécurisé</h3>
+      <p>Nous garantissons la sécurité et l’intégrité de vos colis jusqu’à la livraison.</p>
+    </article>
+    <article class="service-card" tabindex="0">
+      <div class="service-icon" aria-hidden="true">🤝</div>
+      <h3>Partenariat boutique</h3>
+      <p>Collaboration avec les boutiques locales pour offrir un service de qualité.</p>
+    </article>
+    <article class="service-card" tabindex="0">
+      <div class="service-icon" aria-hidden="true">📞</div>
+      <h3>Assistance client</h3>
+      <p>Une équipe dédiée pour répondre à toutes vos questions et vous accompagner.</p>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <section class="footer-section" aria-labelledby="contact-title">
+      <h3 id="contact-title">Contactez-nous</h3>
+      <p>📧 Email : <a href="mailto:contact@g-services.com">contact@g-services.com</a></p>
+      <p>📞 Téléphone : +243 814478093</p>
+      <p>💬 WhatsApp : +243 814478093</p>
+      <img src="C:\Users\Gloire kengo\Documents\Gservices\logo.png" alt=""  width="165" height="65">
+    </section>
+    <section class="footer-section" aria-labelledby="commande-title">
+      <h3 id="commande-title">Comment commander</h3>
+      <p>Choisissez votre boutique préférée et passez commande en ligne ou en magasin.</p>
+      <p>Utilisez nos pages dédiées pour boutiques ou clients pour gérer vos livraisons facilement.</p>
+    </section>
+    <section class="footer-section" aria-labelledby="contact-form-title">
+      <h3 id="contact-form-title">Contact rapide</h3>
+      <form action="https://formsubmit.co/votre-email@example.com" method="POST" target="_blank" style="display:flex; flex-direction: column; gap: 0.5rem; max-width: 300px;">
+        <input type="text" name="name" placeholder="Nom" required style="padding: 0.5rem; border-radius: 5px; border: none;" />
+        <input type="email" name="email" placeholder="Email" required style="padding: 0.5rem; border-radius: 5px; border: none;" />
+        <textarea name="message" placeholder="Message" rows="3" required style="padding: 0.5rem; border-radius: 5px; border: none;"></textarea>
+        <button type="submit" style="background:#0f4c8a; color:#fff; border:none; padding:0.6rem; border-radius:50px; cursor:pointer; font-weight:600;">Envoyer</button>
+      </form>
+      <div class="social-icons" aria-label="Suivez-nous sur les réseaux sociaux">
+        <a href="https://www.facebook.com/profile.php?id=61575998236246" target="_blank" rel="noopener" aria-label="Facebook G-SERVICES" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.098 2.797.142v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.594l-.468 3.622h-3.126V24h6.127C23.4 24 24 23.4 24 22.676V1.325C24 .6 23.4 0 22.675 0z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/g_services243/" target="_blank" rel="noopener" aria-label="Instagram G-SERVICES" title="Instagram">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.75 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/g-services243/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn G-SERVICES" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.851-3.037-1.851 0-2.134 1.445-2.134 2.939v5.667h-3.554V9h3.414v1.561h.049c.476-.9 1.637-1.851 3.368-1.851 3.602 0 4.27 2.368 4.27 5.448v6.294zM5.337 7.433c-1.144 0-2.07-.927-2.07-2.07 0-1.143.926-2.07 2.07-2.07 1.143 0 2.07.927 2.07 2.07 0 1.143-.927 2.07-2.07 2.07zm1.777 13.019H3.56V9h3.554v11.452z"/></svg>
+        </a>
+      </div>
+    </section>
+  </div>
+  <div class="footer-bottom" style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: #a9c9ff;">
+    &copy; 2025 G-SERVICES. Tous droits réservés.
+  </div>
+</footer>
+
+<script>
+  // Animation pour hero fade-in
+  window.addEventListener('DOMContentLoaded', () => {
+    const heroText = document.querySelector('.hero-content');
+    if(heroText) heroText.classList.add('visible');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>G-SERVICES - Pour les Clients</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #112d4e;
+    background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
+  }
+  body::before {
+    content: "";
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(17, 45, 78, 0.7);
+    z-index: -1;
+  }
+  a {
+    color: #a3c0f9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus { color: #dbe3fc; }
+  .container {
+    max-width: 900px;
+    margin: 4rem auto 3rem;
+    background: rgba(255 255 255 / 0.1);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgb(17 45 78 / 0.7);
+    color: white;
+    backdrop-filter: saturate(180%) blur(20px);
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 12px #a3c0f9;
+  }
+  p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    color: white;
+    text-align: left;
+  }
+  ul li {
+    margin-bottom: 1rem;
+    padding-left: 1.3rem;
+    position: relative;
+  }
+  ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #a3c0f9;
+    font-weight: bold;
+  }
+  .btn-back,
+  .btn-order {
+    display: inline-block;
+    background-color: #3f72af;
+    color: white;
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 25px rgba(63,114,175,0.6);
+    text-align: center;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    margin: 0.5rem 0;
+  }
+  .btn-back:hover, .btn-back:focus,
+  .btn-order:hover, .btn-order:focus {
+    background-color: #112d4e;
+    outline: none;
+  }
+  @media (max-width: 600px) {
+    .container {
+      margin: 2rem 1rem 3rem;
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    z-index: 2000;
+    overflow-y: auto;
+  }
+  .modal-overlay.active {
+    display: flex;
+  }
+  .modal {
+    background: white;
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 30px rgb(17 45 78 / 0.25);
+    padding: 2rem 2.5rem;
+    position: relative;
+    font-size: 1rem;
+    color: #112d4e;
+    text-align: left;
+  }
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+  }
+  .close-btn:hover, .close-btn:focus {
+    color: #112d4e;
+    outline: none;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  label {
+    font-weight: 600;
+    color: #112d4e;
+  }
+  input[type="text"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="datetime-local"]:focus,
+  select,
+  textarea {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #3f72af;
+    border-radius: 8px;
+    width: 100%;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+  }
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="datetime-local"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #112d4e;
+    outline: none;
+    box-shadow: 0 0 8px 2px #3f72afaa;
+  }
+  textarea {
+    min-height: 80px;
+  }
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  button[type="submit"] {
+    background-color: #3f72af;
+    color: white;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover, button[type="submit"]:focus {
+    background-color: #112d4e;
+    outline: none;
+  }
+
+  /* Confirmation */
+  #confirmation {
+    max-width: 600px;
+    margin: 2rem auto 4rem;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 14px 40px rgb(17 45 78 / 0.15);
+    color: #112d4e;
+    display: none;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  #confirmation h2 {
+    margin-bottom: 1rem;
+  }
+  #confirmation p {
+    margin-bottom: 0.8rem;
+  }
+  #confirmation strong {
+    color: #3f72af;
+  }
+  #confirmation button {
+    margin-top: 1rem;
+    background: #3f72af;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  #confirmation button:hover, #confirmation button:focus {
+    background: #112d4e;
+    outline: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" role="main">
+  <h1>Services pour les Clients</h1>
+  <p>Profitez de notre service de livraison rapide, sécurisé et fiable directement chez vous.</p>
+  <ul>
+    <li>Commandez dans vos boutiques préférées</li>
+    <li>Suivi en temps réel de votre livraison</li>
+    <li>Options flexibles de livraison</li>
+    <li>Assistance client dédiée</li>
+    <li>Livraison sécurisée et garantie</li>
+  </ul>
+  <p>Pour toute question, contactez-nous à <a href="mailto:contact@g-services.com">contact@g-services.com</a>.</p>
+
+  <!-- Le lien vers le formulaire -->
+  <button class="btn-order" id="openFormBtn" aria-haspopup="dialog" aria-controls="clientFormModal">Faites vous livrer</button>
+
+  <a href="g-services.html" class="btn-back" aria-label="Retour à la page d'accueil">← Retour à l'accueil</a>
+</div>
+
+<!-- Modal Formulaire -->
+<div class="modal-overlay" id="clientFormModal" role="dialog" aria-modal="true" aria-labelledby="formTitle" tabindex="-1" hidden>
+  <div class="modal">
+    <button class="close-btn" aria-label="Fermer le formulaire">&times;</button>
+    <h2 id="formTitle">Formulaire de commande de livraison</h2>
+    <form id="clientForm" novalidate>
+      <label for="boutiqueName">Nom de la boutique<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="boutiqueName" name="Nom de la boutique" required placeholder="Ex: Boutique XYZ" autocomplete="organization" />
+
+      <label for="adresseRecup">Adresse de récupération<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="adresseRecup" name="Adresse de récupération" required placeholder="Ex: A/Funa 3 Q/Funa C/Barumbu" autocomplete="address-line1" />
+
+      <label for="article">Article à récupérer<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="article" name="Article à récupérer" required placeholder="Ex: Sac à main" />
+
+      <fieldset style="border:none; padding: 0; margin: 0;">
+        <legend style="font-weight:600; margin-bottom: 0.3rem;">Le montant est-il validé ?<span aria-hidden="true" style="color:#f00;"> *</span></legend>
+        <div class="checkbox-group">
+          <input type="radio" id="montantOui" name="Montant validé" value="Oui" required />
+          <label for="montantOui">Oui</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="radio" id="montantNon" name="Montant validé" value="Non" />
+          <label for="montantNon">Non</label>
+        </div>
+      </fieldset>
+
+      <label for="restePayer">Si non, combien reste à payer</label>
+      <input type="text" id="restePayer" name="Reste à payer" placeholder="Ex: 5000 FC" />
+
+      <label for="vendeur">Nom du vendeur<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="vendeur" name="Nom du vendeur" required placeholder="Ex: M. Pierre" />
+
+      <label for="numVendeur">Numéro du vendeur (si possible)</label>
+      <input type="tel" id="numVendeur" name="Numéro du vendeur" placeholder="Ex: +243814478093" pattern="^\+?[0-9\s\-]{7,15}$" />
+
+      <label for="clientName">Votre Noms<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="clientName" name="Nom du client" required placeholder="Ex: Jean Dupont" autocomplete="name" />
+
+      <label for="adresseLivraison">Adresse de destination<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="text" id="adresseLivraison" name="Adresse de destination" required placeholder="Ex: A/Funa3 Q/Funa C/Barumbu" autocomplete="address-line1" />
+
+      <label for="datetime">Date et heure de livraison<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="datetime-local" id="datetime" name="Date et heure de livraison" required />
+
+      <label for="mapLocation">Localisation Google Maps (optionnel)</label>
+      <input type="url" id="mapLocation" name="Localisation Google Maps" placeholder="Ex: https://maps.google.com/..." />
+
+      <label for="numClient">Votre Numéro<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <input type="tel" id="numClient" name="Numéro du client" required placeholder="Ex: +243814478093" pattern="^\+?[0-9\s\-]{7,15}$" />
+
+      <label for="communesPrix">Choisissez la commune de la destination pour le tarif<span aria-hidden="true" style="color:#f00;"> *</span></label>
+      <select id="communesPrix" name="Commune et prix" required>
+        <!-- Modifiez ici les communes et leurs prix -->
+        <option value="">-- Sélectionnez une commune --</option>
+        <option value="Gombe - 9000 FC">Gombe - 9000 FC</option>
+        <option value="Ngaliema - 9000 FC">Ngaliema - 9000 FC</option>
+        <option value="Kitambo - 8000 FC">Kitambo - 8000 FC</option>
+        <option value="Mont-Ngavula - 9000 FC">Mont-Ngavula - 9000 FC</option>
+        <option value="Lingwala - 7000 FC">Lingwala - 7000 FC</option>
+        <option value="Barumbu - 7000 FC">Barumbu - 7000 FC</option>
+        <option value="Bandalungwa - 7000 FC">Bandalungwa - 7000 FC</option>
+        <option value="Kasa-vubu - 8000 FC">Kasa-vubu - 8000 FC</option>
+        <option value="Bumbu - 7000 FC">Bumbu - 7000 FC</option>
+        <option value="Limeté - 8000 FC">Limeté - 8000 FC</option>
+        <option value="Lemba - 8000 FC">Lemba - 8000 FC</option>
+        <option value="Matété - 8000 FC">Matété - 8000 FC</option>
+        <option value="Ngaba - 7000 FC">Ngaba - 7000 FC</option>
+        <option value="Kinsesu - 7000 FC">Kinsesu - 7000 FC</option>
+        <option value="Masina - 8000 FC">Masina - 8000 FC</option>
+        <option value="Djili - 8000 FC">Djili - 8000 FC</option>
+        <option value="Nsele - 11000 FC">Lingwala - 11000 FC</option>
+      </select>
+
+      <!-- Champ caché pour numéro de commande -->
+      <input type="hidden" name="Numéro de commande" id="numCommande" value="" />
+
+      <!-- Champs cachés Formsubmit -->
+      <input type="hidden" name="_subject" value="Nouvelle commande client - G-SERVICES" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
+      <button type="submit">Envoyer la commande</button>
+    </form>
+  </div>
+</div>
+
+<!-- Confirmation -->
+<div id="confirmation" role="region" aria-live="polite" tabindex="0" style="display:none; max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 14px 40px rgb(17 45 78 / 0.15); color: #112d4e; font-size: 1.1rem; line-height: 1.5; text-align:center;">
+  <h2>Commande enregistrée avec succès !</h2>
+  <p><strong>Numéro de commande :</strong> <span id="confNumCommande"></span></p>
+  <p><strong>Nom du client :</strong> <span id="confClient"></span></p>
+  <p><strong>Article à récupérer :</strong> <span id="confArticle"></span></p>
+  <p><strong>Adresse de récupération :</strong> <span id="confRecup"></span></p>
+  <p><strong>Adresse de livraison :</strong> <span id="confLivraison"></span></p>
+  <p><strong>Numéro du vendeur :</strong> <span id="confNumVendeur"></span></p>
+  <p><strong>Prix de la livraison (commune choisie) :</strong> <span id="confPrix"></span></p>
+  <p><strong>Montant payé pour valider (si non validé) :</strong> <span id="confMontant"></span></p>
+  <p style="margin-top:2rem; font-weight:bold; color:#3f72af;">
+    Merci de faire une capture d'écran de cette page et de la présenter au livreur.
+  </p>
+  <button id="closeConfirmation" style="margin-top:1rem; padding:0.6rem 1.5rem; background:#3f72af; border:none; color:#fff; border-radius: 50px; cursor:pointer;">Fermer</button>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openFormBtn');
+  const modal = document.getElementById('clientFormModal');
+  const closeBtn = modal.querySelector('.close-btn');
+  const form = document.getElementById('clientForm');
+  const numCommandeInput = document.getElementById('numCommande');
+  const confirmation = document.getElementById('confirmation');
+  const closeConfirmationBtn = document.getElementById('closeConfirmation');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    modal.removeAttribute('hidden');
+    modal.focus();
+    modal.querySelector('input, select, textarea').focus();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    setTimeout(() => modal.setAttribute('hidden', ''), 300);
+    openBtn.focus();
+  });
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeBtn.click();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeBtn.click();
+    }
+  });
+
+  // Validation dynamique "reste à payer"
+  const montantOui = document.getElementById('montantOui');
+  const montantNon = document.getElementById('montantNon');
+  const restePayer = document.getElementById('restePayer');
+  montantOui.addEventListener('change', () => {
+    restePayer.required = false;
+  });
+  montantNon.addEventListener('change', () => {
+    restePayer.required = true;
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Générer numéro aléatoire 8 chiffres
+    const numCommande = Math.floor(10000000 + Math.random() * 90000000);
+    numCommandeInput.value = numCommande;
+
+    // Récupérer valeurs pour confirmation
+    const data = new FormData(form);
+    const montantValide = data.get('Montant validé');
+    const montantPaye = montantValide === 'Non' ? data.get('Reste à payer') : '0 FCFA';
+
+    // Afficher confirmation
+    document.getElementById('confNumCommande').textContent = numCommande;
+    document.getElementById('confClient').textContent = data.get('Nom du client') || '-';
+    document.getElementById('confArticle').textContent = data.get('Article à récupérer') || '-';
+    document.getElementById('confRecup').textContent = data.get('Adresse de récupération') || '-';
+    document.getElementById('confLivraison').textContent = data.get('Adresse de destination') || '-';
+    document.getElementById('confNumVendeur').textContent = data.get('Numéro du vendeur') || 'Non fourni';
+    document.getElementById('confPrix').textContent = data.get('Commune et prix') || '-';
+    document.getElementById('confMontant').textContent = montantPaye;
+
+    // Masquer modal et formulaire
+    modal.classList.remove('active');
+    modal.setAttribute('hidden', '');
+    form.reset();
+    document.querySelector('.container').style.display = 'none';
+
+    // Afficher confirmation
+    confirmation.style.display = 'block';
+    confirmation.focus();
+
+    // Envoyer via fetch à Formsubmit.co
+    fetch('https://formsubmit.co/gloirekengo900@gmail.com', {
+      method: 'POST',
+      body: new URLSearchParams(data),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (!response.ok) throw new Error('Erreur lors de l\'envoi du mail');
+    }).catch(err => {
+      alert('Erreur lors de l\'envoi du mail. Veuillez réessayer.');
+      console.error(err);
+    });
+  });
+
+  closeConfirmationBtn.addEventListener('click', () => {
+    confirmation.style.display = 'none';
+    document.querySelector('.container').style.display = '';
+    openBtn.focus();
+  });
+</script>
+
+</body>
+</html>
