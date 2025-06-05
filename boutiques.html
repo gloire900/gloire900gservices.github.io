@@ -1,350 +1,380 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>G-SERVICES - Contrat Boutiques en Ligne</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; }
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Poppins', sans-serif;
-    color: #112d4e;
-    background: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-    background-size: cover;
-  }
-  body::before {
-    content: "";
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    z-index: -1;
-  }
-  a {
-    color: #3f72af;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover, a:focus { color: #112d4e; }
-  .container {
-    max-width: 900px;
-    margin: 4rem auto 3rem;
-    background: rgba(255 255 255 / 0.9);
-    padding: 3rem 2rem;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgb(17 45 78 / 0.15);
-    color: #112d4e;
-  }
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1.2rem;
-    text-align: center;
-    color: #112d4e;
-  }
-  p {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    color: #112d4e;
-  }
-  ul li {
-    margin-bottom: 1rem;
-    padding-left: 1.3rem;
-    position: relative;
-  }
-  ul li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #3f72af;
-    font-weight: bold;
-  }
-  .btn-back,
-  .btn-order {
-    display: inline-block;
-    background-color: #3f72af;
-    color: white;
-    padding: 0.9rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 8px 25px rgba(63,114,175,0.6);
-    text-align: center;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    cursor: pointer;
-    user-select: none;
-  }
-  .btn-back:hover, .btn-back:focus,
-  .btn-order:hover, .btn-order:focus {
-    background-color: #112d4e;
-    outline: none;
-  }
-  .btn-back {
-    margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: max-content;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>G-SERVICES - Contrat Boutiques en Ligne</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #112d4e;
+            background: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: -1;
+        }
+        a {
+            color: #3f72af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover, a:focus { color: #112d4e; }
+        .container {
+            max-width: 900px;
+            margin: 4rem auto 3rem;
+            background: rgba(255 255 255 / 0.9);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgb(17 45 78 / 0.15);
+            color: #112d4e;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            color: #112d4e;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: #112d4e;
+        }
+        ul li {
+            margin-bottom: 1rem;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3f72af;
+            font-weight: bold;
+        }
+        .btn-back,
+        .btn-order {
+            display: inline-block;
+            background-color: #3f72af;
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(63,114,175,0.6);
+            text-align: center;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+        }
+        .btn-back:hover, .btn-back:focus,
+        .btn-order:hover, .btn-order:focus {
+            background-color: #112d4e;
+            outline: none;
+        }
+        .btn-back {
+            margin-top: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: max-content;
+        }
 
-  /* Modal styles */
-  .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    padding: 1rem;
-  }
-  .modal-overlay.active {
-    display: flex;
-  }
-  .modal {
-    background: white;
-    border-radius: 16px;
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 8px 30px rgb(17 45 78 / 0.25);
-    padding: 2rem 2.5rem;
-    position: relative;
-  }
-  .modal h2 {
-    margin-top: 0;
-    color: #112d4e;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    text-align: center;
-  }
-  .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.3s ease;
-  }
-  .close-btn:hover, .close-btn:focus {
-    color: #112d4e;
-    outline: none;
-  }
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 30px rgb(17 45 78 / 0.25);
+            padding: 2rem 2.5rem;
+            position: relative;
+        }
+        .modal h2 {
+            margin-top: 0;
+            color: #112d4e;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover, .close-btn:focus {
+            color: #112d4e;
+            outline: none;
+        }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  label {
-    font-weight: 600;
-    color: #112d4e;
-  }
-  input[type="text"],
-  input[type="tel"],
-  input[type="datetime-local"],
-  textarea,
-  select {
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #3f72af;
-    border-radius: 8px;
-    resize: vertical;
-    width: 100%;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
-  }
-  input[type="text"]:focus,
-  input[type="tel"]:focus,
-  input[type="datetime-local"]:focus,
-  textarea:focus,
-  select:focus {
-    border-color: #112d4e;
-    outline: none;
-  }
-  textarea {
-    min-height: 100px;
-  }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        label {
+            font-weight: 600;
+            color: #112d4e;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="datetime-local"],
+        textarea,
+        select {
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #3f72af;
+            border-radius: 8px;
+            resize: vertical;
+            width: 100%;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="datetime-local"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #112d4e;
+            outline: none;
+        }
+        textarea {
+            min-height: 100px;
+        }
 
-  /* Checkbox row */
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
+        /* Checkbox row */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
 
-  /* Submit */
-  button[type="submit"] {
-    margin-top: 1.5rem;
-    background-color: #3f72af;
-    color: white;
-    padding: 1rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button[type="submit"]:hover, button[type="submit"]:focus {
-    background-color: #112d4e;
-    outline: none;
-  }
+        /* Submit */
+        button[type="submit"] {
+            margin-top: 1.5rem;
+            background-color: #3f72af;
+            color: white;
+            padding: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover, button[type="submit"]:focus {
+            background-color: #112d4e;
+            outline: none;
+        }
 
-  /* Responsive */
-  @media(max-width: 640px) {
-    .modal {
-      padding: 1.5rem 1.8rem;
-    }
-  }
-</style>
+        /* Confirmation styles */
+        .confirmation {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .confirmation h2 {
+            color: #3f72af;
+        }
+
+        /* Responsive */
+        @media(max-width: 640px) {
+            .modal {
+                padding: 1.5rem 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div class="container" role="main">
-  <h1>Contrat pour les e-commercants</h1>
-  <p>Rejoignez G-SERVICES pour offrir à vos clients une livraison rapide, fiable et sécurisée.</p>
-  <ul>
-    <li>Partenariat personnalisé adapté à vos besoins</li>
-    <li>Tarifs compétitifs et transparents</li>
-    <li>Suivi de livraison en temps réel</li>
-    <li>Support dédié pour vos commandes</li>
-    <li>Visibilité accrue grâce à notre réseau</li>
-  </ul>
+    <h1>Contrat pour les e-commercants</h1>
+    <p>Rejoignez G-SERVICES pour offrir à vos clients une livraison rapide, fiable et sécurisée.</p>
+    <ul>
+        <li>Partenariat personnalisé adapté à vos besoins</li>
+        <li>Tarifs compétitifs et transparents</li>
+        <li>Suivi de livraison en temps réel</li>
+        <li>Support dédié pour vos commandes</li>
+        <li>Visibilité accrue grâce à notre réseau</li>
+    </ul>
 
-  <!-- Lien pour ouvrir le formulaire -->
-  <button class="btn-order" id="openFormBtn" aria-haspopup="dialog" aria-controls="orderFormModal">Faites passer vos commandes de livraisons</button>
+    <button class="btn-order" id="openFormBtn" aria-haspopup="dialog" aria-controls="orderFormModal">Faites passer vos commandes de livraisons</button>
 
-  <p>Pour plus d'informations et pour signer un contrat, contactez-nous à <a href="mailto:contact@g-services.com">contact@g-services.com</a>.</p>
-  <a href="index.html" class="btn-back" aria-label="Retour à la page d'accueil">← Retour à l'accueil</a>
+    <p>Pour plus d'informations et pour signer un contrat, contactez-nous à <a href="mailto:contact@g-services.com">contact@g-services.com</a>.</p>
+    <a href="index.html" class="btn-back" aria-label="Retour à la page d'accueil">← Retour à l'accueil</a>
 </div>
 
 <!-- Modal Formulaire -->
 <div class="modal-overlay" id="orderFormModal" role="dialog" aria-modal="true" aria-labelledby="formTitle" tabindex="-1">
-  <div class="modal">
-    <button class="close-btn" aria-label="Fermer le formulaire">&times;</button>
-    <h2 id="formTitle">Formulaire de commande de livraison</h2>
-    <form 
-      action="https://formsubmit.co/gloirekengo900@gmail.com" 
-      method="POST" 
-      id="orderForm"
-      novalidate
-    >
-      <label for="boutiqueName">Nom de l'entreprise<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <input type="text" id="boutiqueName" name="Nom de la boutique" required placeholder="Ex: Boutique XYZ" autocomplete="organization" />
+    <div class="modal">
+        <button class="close-btn" aria-label="Fermer le formulaire">&times;</button>
+        <h2 id="formTitle">Formulaire de commande de livraison</h2>
+        <form 
+            action="https://formsubmit.co/gloirekengo900@gmail.com" 
+            method="POST" 
+            id="orderForm"
+            novalidate
+            onsubmit="return showConfirmationPage();"
+        >
+            <label for="boutiqueName">Nom de l'entreprise<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <input type="text" id="boutiqueName" name="Nom de la boutique" required placeholder="Ex: Boutique XYZ" autocomplete="organization" />
 
-      <label for="clientName">Nom du client<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <input type="text" id="clientName" name="Nom du client" required placeholder="Ex: Jean Dupont" autocomplete="name" />
+            <label for="clientName">Nom du client<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <input type="text" id="clientName" name="Nom du client" required placeholder="Ex: Jean Dupont" autocomplete="name" />
 
-      <label for="article">Article à livrer<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <input type="text" id="article" name="Article à livrer" required placeholder="Ex: Sac à main" />
+            <label for="article">Article à livrer<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <input type="text" id="article" name="Article à livrer" required placeholder="Ex: Sac à main" />
 
-      <fieldset style="border:none; padding: 0; margin: 0;">
-        <legend style="font-weight:600; margin-bottom: 0.3rem;">Le montant est-il validé ?<span aria-hidden="true" style="color:#f00;"> *</span></legend>
-        <div class="checkbox-group">
-          <input type="radio" id="montantOui" name="Montant validé" value="Oui" required />
-          <label for="montantOui">Oui</label>
-        </div>
-        <div class="checkbox-group">
-          <input type="radio" id="montantNon" name="Montant validé" value="Non" />
-          <label for="montantNon">Non</label>
-        </div>
-      </fieldset>
+            <fieldset style="border:none; padding: 0; margin: 0;">
+                <legend style="font-weight:600; margin-bottom: 0.3rem;">Le montant est-il validé ?<span aria-hidden="true" style="color:#f00;"> *</span></legend>
+                <div class="checkbox-group">
+                    <input type="radio" id="montantOui" name="Montant validé" value="Oui" required />
+                    <label for="montantOui">Oui</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="montantNon" name="Montant validé" value="Non" />
+                    <label for="montantNon">Non</label>
+                </div>
+            </fieldset>
 
-      <label for="coutArticle">Si non, combien coûte l'article ?</label>
-      <input type="text" id="coutArticle" name="Coût de l'article" placeholder="Ex: 15000 FC" />
+            <label for="coutArticle">Si non, combien coûte l'article ?</label>
+            <input type="text" id="coutArticle" name="Coût de l'article" placeholder="Ex: 15000 FC" />
 
-      <label for="datetime">Date et heure de livraison<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <input type="datetime-local" id="datetime" name="Date et heure de livraison" required />
+            <label for="datetime">Date et heure de livraison<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <input type="datetime-local" id="datetime" name="Date et heure de livraison" required />
 
-      <label for="adresse">Adresse à livrer (soyez précis)<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <textarea id="adresse" name="Adresse à livrer" required placeholder="Ex: A/funa 3 Q/funa C/Barumbu"></textarea>
+            <label for="adresse">Adresse à livrer (soyez précis)<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <textarea id="adresse" name="Adresse à livrer" required placeholder="Ex: A/funa 3 Q/funa C/Barumbu"></textarea>
 
-      <label for="numeroClient">Numéro du client<span aria-hidden="true" style="color:#f00;"> *</span></label>
-      <input type="tel" id="numeroClient" name="Numéro du client" required placeholder="Ex: +243 829 999 999" pattern="^\+?[0-9\s\-]{7,15}$" />
+            <label for="numeroClient">Numéro du client<span aria-hidden="true" style="color:#f00;"> *</span></label>
+            <input type="tel" id="numeroClient" name="Numéro du client" required placeholder="Ex: +243 829 999 999" pattern="^\+?[0-9\s\-]{7,15}$" />
 
-      <label for="description">Description</label>
-      <textarea id="description" name="Description" placeholder="Informations complémentaires"></textarea>
+            <label for="description">Description</label>
+            <textarea id="description" name="Description" placeholder="Informations complémentaires"></textarea>
 
-      <!-- Champs cachés pour formsubmit.co, pour configurer mail -->
-      <input type="hidden" name="_subject" value="Nouvelle commande de livraison - G-SERVICES">
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value="https://votre-site.com/merci.html" />
+            <!-- Champs cachés pour formsubmit.co, pour configurer mail -->
+            <input type="hidden" name="_subject" value="Nouvelle commande de livraison - G-SERVICES">
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="confirmation.html" />
 
-      <button type="submit">Envoyer la commande</button>
-    </form>
-  </div>
+            <button type="submit">Envoyer la commande</button>
+        </form>
+    </div>
+</div>
+
+<!-- Confirmation Message -->
+<div class="confirmation" id="confirmationMessage">
+    <h2>Commande Passée avec Succès!</h2>
+    <p>Merci pour votre commande. Nous traiterons votre demande dans les plus brefs délais.</p>
+    <a href="index.html" class="btn-back">Retour à l'accueil</a>
 </div>
 
 <script>
-  // Ouverture / fermeture modal
-  const openFormBtn = document.getElementById('openFormBtn');
-  const modal = document.getElementById('orderFormModal');
-  const closeBtn = modal.querySelector('.close-btn');
-  const firstInput = modal.querySelector('input, textarea, select');
+    // Ouverture / fermeture modal
+    const openFormBtn = document.getElementById('openFormBtn');
+    const modal = document.getElementById('orderFormModal');
+    const closeBtn = modal.querySelector('.close-btn');
+    const firstInput = modal.querySelector('input, textarea, select');
 
-  // Ouvrir modal
-  openFormBtn.addEventListener('click', () => {
-    modal.classList.add('active');
-    modal.removeAttribute('hidden');
-    modal.focus();
-    // Focus premier champ
-    firstInput.focus();
-  });
+    // Ouvrir modal
+    openFormBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        modal.removeAttribute('hidden');
+        modal.focus();
+        // Focus premier champ
+        firstInput.focus();
+    });
 
-  // Fermer modal
-  function closeModal() {
-    modal.classList.remove('active');
-    setTimeout(() => modal.setAttribute('hidden', ''), 300);
-    openFormBtn.focus();
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-
-  // Fermer modal si clic hors modal
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      closeModal();
+    // Fermer modal
+    function closeModal() {
+        modal.classList.remove('active');
+        setTimeout(() => modal.setAttribute('hidden', ''), 300);
+        openFormBtn.focus();
     }
-  });
 
-  // Fermer modal avec ESC
-  document.addEventListener('keydown', e => {
-    if (e.key === "Escape" && modal.classList.contains('active')) {
-      closeModal();
+    closeBtn.addEventListener('click', closeModal);
+
+    // Fermer modal si clic hors modal
+    modal.addEventListener('click', e => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Fermer modal avec ESC
+    document.addEventListener('keydown', e => {
+        if (e.key === "Escape" && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Gestion validation simple: si "Montant validé" = Non, alors "Coût de l'article" devient obligatoire
+    const montantOui = document.getElementById('montantOui');
+    const montantNon = document.getElementById('montantNon');
+    const coutArticle = document.getElementById('coutArticle');
+
+    function toggleCoutArticle() {
+        if (montantNon.checked) {
+            coutArticle.required = true;
+            coutArticle.focus();
+        } else {
+            coutArticle.required = false;
+        }
     }
-  });
+    montantOui.addEventListener('change', toggleCoutArticle);
+    montantNon.addEventListener('change', toggleCoutArticle);
 
-  // Gestion validation simple: si "Montant validé" = Non, alors "Coût de l'article" devient obligatoire
-  const montantOui = document.getElementById('montantOui');
-  const montantNon = document.getElementById('montantNon');
-  const coutArticle = document.getElementById('coutArticle');
-
-  function toggleCoutArticle() {
-    if (montantNon.checked) {
-      coutArticle.required = true;
-      coutArticle.focus();
-    } else {
-      coutArticle.required = false;
+    // Confirmation message
+    function showConfirmationPage() {
+        const form = document.getElementById('orderForm');
+        if (form.checkValidity()) {
+            setTimeout(() => {
+                modal.classList.remove('active');
+                document.querySelector('.container').style.display = 'none';
+                document.getElementById('confirmationMessage').style.display = 'block';
+            }, 1000); // Attendre 1 seconde
+        }
+        return true; // Laisser le formulaire se soumettre
     }
-  }
-  montantOui.addEventListener('change', toggleCoutArticle);
-  montantNon.addEventListener('change', toggleCoutArticle);
 </script>
 
 </body>
