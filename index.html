@@ -384,16 +384,19 @@
       <div class="service-icon">💻</div>
       <h3>Initiation à l’informatique</h3>
       <p>Apprenez les bases : ordinateur, internet, emails, sécurité.</p>
+      <p><strong>Prix : 40 à 50 $ / mois</strong></p>
     </article>
     <article class="service-card">
       <div class="service-icon">📝</div>
       <h3>Bureautique</h3>
       <p>Maîtrisez Word, Excel, PowerPoint et autres outils essentiels.</p>
+      <p><strong>Prix : 70 à 80 $ / mois</strong></p>
     </article>
     <article class="service-card">
       <div class="service-icon">🌐</div>
       <h3>Programmation Web</h3>
       <p>HTML, CSS, Python et plus pour créer vos propres sites.</p>
+      <p><strong>Prix : 100 à 120 $ / mois</strong></p>
     </article>
     <article class="service-card">
       <div class="service-icon">🤝</div>
@@ -414,15 +417,27 @@
     <input type="text" name="Nom" placeholder="Votre nom complet" required style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
     <input type="email" name="Email" placeholder="Votre adresse email" required style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
     <input type="text" name="Téléphone" placeholder="Votre numéro de téléphone" required style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
+    <input type="text" name="WhatsApp" placeholder="Votre numéro WhatsApp" style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
 
-    <label for="cours">Cours souhaité :</label>
-    <select name="Cours choisi" id="cours" required style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
-      <option value="">-- Sélectionnez un cours --</option>
-      <option value="Initiation à l’informatique">Initiation à l’informatique</option>
-      <option value="Bureautique (Word, Excel, PowerPoint)">Bureautique (Word, Excel, PowerPoint)</option>
-      <option value="Programmation Web (HTML, CSS, Python)">Programmation Web (HTML, CSS, Python)</option>
-      <option value="Assistance personnalisée">Assistance personnalisée</option>
+    <fieldset style="border:1px solid #ccc;padding:1rem;border-radius:8px;">
+      <legend><strong>Choisissez vos cours (vous pouvez en sélectionner plusieurs) :</strong></legend>
+      <label><input type="checkbox" name="Cours choisis" value="Initiation à l’informatique (40-50$/mois)"> Initiation à l’informatique (40-50$/mois)</label><br>
+      <label><input type="checkbox" name="Cours choisis" value="Bureautique (70-80$/mois)"> Bureautique (70-80$/mois)</label><br>
+      <label><input type="checkbox" name="Cours choisis" value="Programmation Web (100-120$/mois)"> Programmation Web (100-120$/mois)</label><br>
+      <label><input type="checkbox" name="Cours choisis" value="Assistance personnalisée"> Assistance personnalisée</label>
+    </fieldset>
+
+    <label for="frequence">Nombre de fois par semaine :</label>
+    <input type="text" name="Fréquence des cours" id="frequence" placeholder="Exemple : 2 fois par semaine" style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
+
+    <label for="horaire">Préférence horaire :</label>
+    <select name="Préférence horaire" id="horaire" style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
+      <option value="">-- Sélectionnez une option --</option>
+      <option value="Je choisis une heure précise">Je choisis une heure précise</option>
+      <option value="Je préfère planifier avec le formateur">Je préfère planifier avec le formateur</option>
     </select>
+
+    <input type="text" name="Heure souhaitée" placeholder="Indiquez l’heure (si choisie)" style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;">
 
     <textarea name="Message" placeholder="Précisez vos besoins ou disponibilités" rows="4" style="padding:0.8rem;border-radius:8px;border:1px solid #ccc;"></textarea>
 
@@ -479,4 +494,5 @@
 
 </body>
 </html>
+
 
